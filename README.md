@@ -1,5 +1,4 @@
-##Get LLDP Neighbors
-
+#Get LLDP Neighbors
 This script will update the interface descriptions on a switch based off of the received LLDP information.
 
 ###Setup
