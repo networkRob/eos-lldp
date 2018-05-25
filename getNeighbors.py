@@ -3,9 +3,12 @@
 from jsonrpclib import Server
 import argparse
 
+#credentials to login to device
+eUser = 'arista'
+ePwd = 'arista'
 
 def cSwitch(hIP):
-        return(Server('https://arista:arista@{0}/command-api'.format(hIP)))
+        return(Server('https://{0}:{1}@{2}/command-api'.format(eUser,ePwd,hIP)))
 
 
 def runCMDS(hIP,*rcmd):
@@ -55,7 +58,8 @@ def main():
 	parser = argparse.ArgumentParser(description="Edit Arista Interface Descriptions with LLDP Neighbor Information")
         parser.add_argument("--host",help="IP address of the target switch")
         args = parser.parse_args()
-
+        if args.host == None:
+                args.host = '127.0.0.1'
 	if tEnable(args.host) == 1:
         	upDLLDP(args.host)
 
